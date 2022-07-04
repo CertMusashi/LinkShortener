@@ -1,8 +1,3 @@
-////////////////////////////
-// Twitter: @mikedevelops
-////////////////////////////
-
-// your custome placeholder goes here!
 var ph = "Search Website e.g. \"Dancing Cats\"",
 	searchBar = $('#search'),
 	// placeholder loop counter
