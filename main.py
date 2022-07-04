@@ -1,25 +1,19 @@
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse 
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse , RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.requests import Request
 from fastapi.staticfiles import StaticFiles
 from os import system
+from time import sleep
 from re import match
 from random import choice , randrange
-
 
 
 db = {}
 app = FastAPI()
 
 templates = Jinja2Templates(directory="temp")
-app.mount("/html/css", StaticFiles(directory="temp/html/css"), name="html_static")
-
-
-def write(name,txt):
-    with open(name,"w",encoding="utf-8") as f:
-        f.write(txt)
-        f.close()
+app.mount("/html/static", StaticFiles(directory="temp/html/static"), name="html_static")
         
 def read(filename):
  with open(filename , "r", encoding="utf-8") as f:
@@ -41,19 +35,20 @@ def add_to_database(url):
 
 @app.get('/')
 def generate(request: Request,url="nvn"):
+    url = url.lower()
+    holder = "محل قرار گیری لینک جدید"
     pedaret = request.base_url
     if url == "nvn" or url == "":
-        url_jadid = "محل قرار گیری لینک جدید"
-        return templates.TemplateResponse("html/home.html", {"request":request ,"new_url":"","view":url_jadid})
+        return templates.TemplateResponse("html/home.html", {"request":request ,"new_url":"","view":holder})
     else:
         url = url if match("^https://|^http://", url) else "https://" + url
         if url in db.keys():
             url_jadid = str(pedaret)+str(db[url])
-            return templates.TemplateResponse("html/home.html", {"request":request,"new_url":url_jadid,"view":url_jadid})
+            return templates.TemplateResponse("html/home.html", {"request":request,"new_url":url_jadid,"view":holder})
         else:
             add_to_database(url=url)
             url_jadid = str(pedaret)+str(db[url])
-            return templates.TemplateResponse("html/home.html", {"request":request,"new_url":url_jadid,"view":url_jadid})
+            return templates.TemplateResponse("html/home.html", {"request":request,"new_url":url_jadid,"view":holder})
 
   
 @app.get('/{id}')
@@ -66,3 +61,7 @@ def redirect(id,request:Request):
             return templates.TemplateResponse("html/wait.html", {"request":request,"redirect_url":key_list[x]})
     except:
         return templates.TemplateResponse("html/404.html", {"request":request})
+    
+    
+if __name__ == "__main__":
+    system("uvicorn main:app")
