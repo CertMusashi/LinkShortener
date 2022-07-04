@@ -61,7 +61,3 @@ def redirect(id,request:Request):
             return templates.TemplateResponse("html/wait.html", {"request":request,"redirect_url":key_list[x]})
     except:
         return templates.TemplateResponse("html/404.html", {"request":request})
-    
-    
-if __name__ == "__main__":
-    system("uvicorn main:app")
