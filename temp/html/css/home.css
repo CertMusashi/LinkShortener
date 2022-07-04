@@ -1,6 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700);
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
     background-color: rgb(37, 37, 37);
 }
 
@@ -11,19 +13,6 @@ body {
     letter-spacing: .4em;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #191723;
-}
-
-.title__o {
-    color: #191723;
-    display: inline-block;
-    margin-left: 15px;
-    border: 3px solid red;
-    margin-right: .4em;
-    vertical-align: middle;
-    height: 5rem;
-    width: 5rem;
-    border-radius: 50%;
-    padding: 0;
 }
 
 #text-and-form .hello {
@@ -55,20 +44,6 @@ body {
     font-weight: 600;
 }
 
-.btn {
-    display: block;
-    text-decoration: none;
-    color: white;
-    height: 40px;
-    width: 150px;
-    line-height: 40px;
-    border-radius: 5px;
-    font-family: Arial, Tahoma, Verdana, Sans-serif;
-    font-weight: 900;
-    margin: auto;
-    background-color: #3498db;
-}
-
 #header {
     margin: 0;
     height: 50px;
@@ -97,48 +72,4 @@ body {
 #text-and-form {
     text-align: center;
     margin-top: 180px;
-}
-
-#resolver-name-form input[name=url] {
-    height: 40px;
-    font-family: "Arial";
-    font-size: 14px;
-    padding: 0 20px;
-    outline-width: 0;
-    background: transparent;
-    border-radius: 4px;
-    border: 1px solid rgb(204, 182, 182);
-    width: 100%;
-    box-sizing: border-box;
-    max-width: 470px;
-}
-
-#resolver-name-form input[type=submit] {
-    height: 40px;
-    background: transparent;
-    border: 1px solid black;
-    border-radius: 4px;
-    color: rgb(192, 192, 228);
-}
-
-#resolver-name-form {}
-
-#main {
-    max-width: 1000px;
-    margin: auto;
-}
-
-#resolver-main {
-    height: 500px;
-    /*background-color:rgb(70, 70, 70);
-  border:1px solid rgb(161, 146, 146);*/
-}
-
-#resolver-input-and-button {
-    margin: auto;
-}
-
-#form-resolver-container {
-    margin-top: 20px;
-    margin: auto;
 }
