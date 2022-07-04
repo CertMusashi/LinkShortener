@@ -13,7 +13,7 @@ db = {}
 app = FastAPI()
 
 templates = Jinja2Templates(directory="temp")
-app.mount("/html/static", StaticFiles(directory="temp/html/static"), name="html_static")
+app.mount("/html/static", StaticFiles(directory="temp/html/css"), name="html_static")
         
 def read(filename):
  with open(filename , "r", encoding="utf-8") as f:
