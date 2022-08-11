@@ -13,7 +13,7 @@ db = {}
 app = FastAPI()
 
 templates = Jinja2Templates(directory="temp")
-app.mount("/html/static", StaticFiles(directory="temp/html/css"), name="html_static")
+app.mount("/html/static", StaticFiles(directory="temp/html/"), name="html_static")
         
 def read(filename):
  with open(filename , "r", encoding="utf-8") as f:
@@ -39,7 +39,7 @@ def generate(request: Request,url="nvn"):
     holder = "محل قرار گیری لینک جدید"
     pedaret = request.base_url
     if url == "nvn" or url == "":
-        return templates.TemplateResponse("html/home.html", {"request":request ,"new_url":"","view":holder})
+        return templates.TemplateResponse("html/home.html", {"request":request ,"view":"عین آدم لینکتو وارد کن"})
     else:
         url = url if match("^https://|^http://", url) else "https://" + url
         if url in db.keys():
