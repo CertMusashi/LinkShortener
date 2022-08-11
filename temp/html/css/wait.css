@@ -1,0 +1,31 @@
+body {
+    background-color: #191723;
+    color: white;
+    font-family: "Varela", sans-serif;
+    text-align: center;
+    margin-top: 20%;
+}
+
+.contact {
+    color: rgb(125, 176, 243);
+    font-variant: small-caps;
+    transform: scale(1, 0.8);
+    letter-spacing: 0.1em;
+}
+
+svg path,
+svg rect {
+    fill: #00ffff;
+}
+
+.subtitle {
+    font-variant: small-caps;
+    transform: scale(1, .8);
+    letter-spacing: 0.1em;
+}
+
+.subtitle2 {
+    font-variant: small-caps;
+    transform: scale(1, .8);
+    letter-spacing: 0.1em;
+}
