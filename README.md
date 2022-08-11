@@ -1,2 +1,2 @@
 # LinkShortener
-🔧 It make the link shorter by emoji. Written In Python Using Fastapi.
+🔧 It make the link shorter via emoji. Written In Python Using Fastapi.
