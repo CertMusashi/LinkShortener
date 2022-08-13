@@ -7,10 +7,13 @@ from os import system
 from time import sleep
 from re import match
 from random import choice , randrange
+from tinydb import TinyDB,Query
 
 
+dbase = TinyDB('db.json')
 db = {}
 app = FastAPI()
+q = Query()
 
 templates = Jinja2Templates(directory="temp")
 app.mount("/html/static", StaticFiles(directory="temp/html/"), name="html_static")
@@ -28,36 +31,38 @@ def randemoji():
     
 def add_to_database(url):
     emoji = randemoji()
-    if url not in db.keys():
-        if emoji not in db.values():
-            db[url] = emoji
+    u = dbase.search(q.link == url)
+    e = dbase.search(q.emo == emoji)
+    if not u:
+        if not e:
+            dbase.insert({'link':url,'emo':emoji})
   
 
 @app.get('/')
 def generate(request: Request,url="nvn"):
     url = url.lower()
-    holder = "محل قرار گیری لینک جدید"
     pedaret = request.base_url
-    if url == "nvn" or url == "":
-        return templates.TemplateResponse("html/home.html", {"request":request ,"view":"عین آدم لینکتو وارد کن"})
+    if url == "nvn":
+        return templates.TemplateResponse("html/home.html", {"request":request})
     else:
         url = url if match("^https://|^http://", url) else "https://" + url
-        if url in db.keys():
-            url_jadid = str(pedaret)+str(db[url])
-            return templates.TemplateResponse("html/home.html", {"request":request,"new_url":url_jadid,"view":holder})
+        m = dbase.search(q.link == url)
+        if m:
+            url_jadid = str(pedaret)+str(m[0]['emo'])
+            return templates.TemplateResponse("html/home.html", {"request":request,"new_url":url_jadid})
         else:
             add_to_database(url=url)
-            url_jadid = str(pedaret)+str(db[url])
-            return templates.TemplateResponse("html/home.html", {"request":request,"new_url":url_jadid,"view":holder})
+            m = dbase.search(q.link == url)
+            if m:
+                url_jadid = str(pedaret)+str(m[0]['emo'])
+                return templates.TemplateResponse("html/home.html", {"request":request,"new_url":url_jadid})
 
-  
+
 @app.get('/{id}')
 def redirect(id,request:Request):
-    key_list = list(db.keys())
-    value_list = list(db.values())
-    try:
-        x = value_list.index(id)
-        if type(x) == int:
-            return templates.TemplateResponse("html/wait.html", {"request":request,"redirect_url":key_list[x]})
-    except:
-        return templates.TemplateResponse("html/404.html", {"request":request})
+    m = dbase.search(q.emo == id)
+    if m:
+        try:
+            return templates.TemplateResponse("html/wait.html", {"request":request,"redirect_url":m[0]['link']})
+        except:
+            return templates.TemplateResponse("html/404.html", {"request":request})
