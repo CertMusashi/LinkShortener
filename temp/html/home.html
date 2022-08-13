@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
 <head>
@@ -10,8 +11,9 @@
     <meta name="robots" content="index, follow">
     <meta name="generator" content="Mahyar Azari">
     <link href="https://fonts.googleapis.com/css?family=Lalezar:400&subset=arabic&display=swap" rel="stylesheet">
-    <link href="{{ url_for('html_static', path='css/home.css') }}" rel="stylesheet">
     <link href="{{ url_for('html_static', path='css/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('html_static', path='css/home.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -34,8 +36,8 @@
         <form>
             <input type="submit" id="Button1" name="" value="کوتاه کردن" style="position:absolute;left:279px;top:419px;width:147px;height:40px;z-index:5;">
             <input type="url" id="Editbox1" style="position:absolute;left:225px;top:262px;width:244px;height:35px;z-index:6;" name="url" value="" autocomplete="off" spellcheck="false" placeholder="https://direct-link">
-            <h3 style="color:#ee7320;font-family:Lalezar;position:absolute;left:251px;top:345px;width:244px;height:35px;z-index:6;font-size: 14px;"><a href="{{new_url}}">{{new_url}}</a></h3>
-            <h3 style="color:#ee7320;font-family:Lalezar;position:absolute;left:255px;top:345px;width:244px;height:35px;z-index:6;font-size: 25px;">{{ view }}</h3>
+            <a href="{{new_url}}"><input type="url" id="Editbox1" style="position:absolute;left:225px;top:325px;width:244px;height:35px;z-index:7;" value="{{new_url}}" autocomplete="off" spellcheck="false" placeholder="محل قرار گیری لینک جدید" readonly></a>
+            <h3 style="color:#ee7320;font-family:Lalezar;position:absolute;left:255px;top:345px;width:244px;height:35px;z-index:6;font-size: 25px;"></h3>
         </form>
         <div id="wb_Line2 " style="position:absolute;left:166px;top:430px;width:94px;height:83px;opacity:0.50;z-index:8; ">
             <img src="{{ url_for('html_static', path='image/img0003.png') }}" id="Line2 " alt=" " width="94 " height="-83 "></div>
