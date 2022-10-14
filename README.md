@@ -1,5 +1,5 @@
 # LinkShortener
-🔧 It make the link shorter via emoji. Written In Python Using Fastapi.
+🔧 this script make the link's shorter via emoji's. 
 
 # ScreenShot
 ![Screenshot](ScreenShot.png)
