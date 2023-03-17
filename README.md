@@ -18,7 +18,7 @@ python main.py
 ```
 
 
-# support:
+# Support:
 <a href="https://www.coffeete.ir/cumoon"><img class="img-fluid" src="https://coffeebede.ir/DashboardTemplateV2/app-assets/images/banner/default-yellow.svg" /></a>
 
 
