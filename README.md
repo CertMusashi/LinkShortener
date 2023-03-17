@@ -7,10 +7,7 @@
 # Conponents:
 
 ```
-pip3 install fastapi
-```
-```
-pip3 install tinydb
+pip3 install -r requirements.txt
 ```
 
 
