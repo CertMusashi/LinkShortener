@@ -6,12 +6,7 @@ body {
     margin-top: 20%;
 }
 
-.contact {
-    color: rgb(125, 176, 243);
-    font-variant: small-caps;
-    transform: scale(1, 0.8);
-    letter-spacing: 0.1em;
-}
+
 
 svg path,
 svg rect {
